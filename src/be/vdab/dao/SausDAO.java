@@ -62,5 +62,9 @@ public class SausDAO {
 		SAUZEN.entrySet().removeIf(entry -> teVerwijderenSauzen.contains(entry.getValue().getNaam()));
 		
 	}
+	
+	public Saus read(long id) {
+		return SAUZEN.get(id);
+	}
 
 }

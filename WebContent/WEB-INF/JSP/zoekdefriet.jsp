@@ -24,30 +24,9 @@
 		<input type='submit' name='nieuwSpel' value='Nieuw Spel'>
 		</form>
 		
-		<!-- 
-		<button type='submit' name='deurnr' value='1'>
-			<img src='<c:url value="/images/deurtoe.png"/>' alt='deur toe' />
-		</button>
-		<button type='submit' name='deurnr' value='2'>
-			<img src='<c:url value="/images/deurtoe.png"/>' alt='deur toe' />
-		</button>
-		<button type='submit' name='deurnr' value='3'>
-			<img src='<c:url value="/images/deurtoe.png"/>' alt='deur toe' />
-		</button>
-		<button type='submit' name='deurnr' value='4'>
-			<img src='<c:url value="/images/deurtoe.png"/>' alt='deur toe' />
-		</button>
-		<button type='submit' name='deurnr' value='5'>
-			<img src='<c:url value="/images/deurtoe.png"/>' alt='deur toe' />
-		</button>
-		<button type='submit' name='deurnr' value='6'>
-			<img src='<c:url value="/images/deurtoe.png"/>' alt='deur toe' />
-		</button>
-		<button type='submit' name='deurnr' value='7'>
-			<img src='<c:url value="/images/deurtoe.png"/>' alt='deur toe' />
-		</button>
-		 -->
 	</div>
+	
+	
 
 </body>
 
