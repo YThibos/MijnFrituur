@@ -22,13 +22,26 @@
 		<img alt="hangman ${aantalFouteGokken}" src="<c:url value="/images/${aantalFouteGokken}.png" />" />
 	</div>
 	
-	<form method="post">
+	<span>${status} </span>
+	<form method="post" id="gokform">
 		<label>Ik gok de letter ..
 			<input name="gegokteLetter" type="text" autocomplete="off" maxlength="1" autofocus required>
 		</label>
-		<input type="submit" value="Gok"><input name="nieuwSpel" type="submit" value="Nieuw spel">
+		<input type="submit" value="Gok" id="gokknop">
+	</form>
+	<form method="post">
+	<input name="nieuwSpel" type="submit" value="Nieuw spel">
 	</form>
 
+<script>
+document.getElementById("gokform").onsubmit = function() {
+if ( ! navigator.cookieEnabled) { (1)
+alert("Dit werkt enkel als cookies aanstaan"); (2)
+return false; (3)
+}
+document.getElementById("toevoegknop").disabled=${disableKnop};
+};
+</script>
 </body>
 
 </html>

@@ -41,6 +41,7 @@ public class SausRadenServlet extends HttpServlet {
 			// Geen te raden saus: initializeer nieuw spel
 			teRadenSaus = genereerTeRadenSaus();
 
+			//request.setAttribute("disableKnop", false);
 			session.setAttribute("teRadenSaus", teRadenSaus);
 		}
 
@@ -72,12 +73,43 @@ public class SausRadenServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		if (request.getAttribute("nieuwSpel") == null) {
+		if (request.getParameter("nieuwSpel") == null) {
 			
 			HttpSession session = request.getSession();
 			
-			char gegokteLetter = (char) request.getAttribute("gegokteLetter");
-			// TODO VALIDEER GEGOKTE LETTER
+			String teRadenSaus = (String) session.getAttribute("teRadenSaus");
+			
+			// Haal gegokte letter op en check of ze voor komt
+			char gegokteLetter = request.getParameter("gegokteLetter").charAt(0);
+			List<Character> geradenLetters = (List<Character>) session.getAttribute("geradenLetters");
+			if (isLetterInWoord(teRadenSaus, gegokteLetter) && !geradenLetters.contains(gegokteLetter)) {
+				// Voeg gegokte letter toe bij juiste letters
+				
+				geradenLetters.add(gegokteLetter);
+				request.setAttribute("status", "Succes, je letter komt voor in de saus ..");
+				session.setAttribute("geradenLetters", geradenLetters);
+				
+				boolean gewonnen = true;
+				for (int i = 0; i < teRadenSaus.length(); i++) {
+					if (!geradenLetters.contains(teRadenSaus.charAt(i))) gewonnen = false ;
+				}
+				
+				if (gewonnen) request.setAttribute("status", "Gewonnen!");
+				
+			}
+			else {
+				// dood ? "dood!" : ++foutegokken
+				int aantalFouteGokken = (int) session.getAttribute("aantalFouteGokken") + 1;
+				
+				request.setAttribute("status", "Fout gegokt, probeer nogeens");
+				
+				if (aantalFouteGokken >= 10) {
+					request.setAttribute("status", "Dood! Het te raden woord was: " + session.getAttribute(teRadenSaus) + "\n.Start een nieuw spel.");
+					request.setAttribute("disableKnop", true);
+				}
+				
+				session.setAttribute("aantalFouteGokken", aantalFouteGokken);
+			}
 			
 
 		} else {
@@ -112,7 +144,7 @@ public class SausRadenServlet extends HttpServlet {
 
 	}
 	
-	private boolean zoekLetterInWoord(String woord, char letter) {
+	private boolean isLetterInWoord(String woord, char letter) {
 		
 		for (int i = 0; i < woord.length(); i++) {
 			if (woord.charAt(i) == letter)
