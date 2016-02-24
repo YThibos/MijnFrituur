@@ -14,10 +14,9 @@ import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Application Lifecycle Listener implementation class RequestsListener
- *
+ * REPLACED BY REQUESTFILTER
+ * 
  */
-@WebListener
 public class RequestsListener implements ServletContextListener, ServletRequestListener {
 	
 	private static final String REQUESTSMAP = "requestsMap";
@@ -28,20 +27,21 @@ public class RequestsListener implements ServletContextListener, ServletRequestL
      */
     public void requestInitialized(ServletRequestEvent sre)  { 
     	
-    	if (sre.getServletRequest() instanceof HttpServletRequest) {
-    		HttpServletRequest request = (HttpServletRequest) sre.getServletRequest();
-    		
-    		String URL = request.getRequestURI();
-    		
-    		if (!EXCLUDES.contains(URL.substring(URL.length()-3, URL.length()).toLowerCase())) {
-    			ConcurrentHashMap<String, AtomicInteger> requestsMap = 
-    					(ConcurrentHashMap<String, AtomicInteger>) sre.getServletContext().getAttribute(REQUESTSMAP);
-    			AtomicInteger counter = requestsMap.putIfAbsent(URL, new AtomicInteger(1));
-    			if (counter != null) {
-    				counter.incrementAndGet();
-    			}
-    		}
-    	}
+//    	if (sre.getServletRequest() instanceof HttpServletRequest) {
+//    		HttpServletRequest request = (HttpServletRequest) sre.getServletRequest();
+//    		
+//    		String URL = request.getRequestURI();
+//    		
+//    		if (!EXCLUDES.contains(URL.substring(URL.length()-3, URL.length()).toLowerCase())) {
+//    			@SuppressWarnings("unchecked")
+//				ConcurrentHashMap<String, AtomicInteger> requestsMap = 
+//    					(ConcurrentHashMap<String, AtomicInteger>) sre.getServletContext().getAttribute(REQUESTSMAP);
+//    			AtomicInteger counter = requestsMap.putIfAbsent(URL, new AtomicInteger(1));
+//    			if (counter != null) {
+//    				counter.incrementAndGet();
+//    			}
+//    		}
+//    	}
     }
 
 	@Override
@@ -54,7 +54,7 @@ public class RequestsListener implements ServletContextListener, ServletRequestL
 
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
-		sce.getServletContext().setAttribute(REQUESTSMAP, new ConcurrentHashMap<String, AtomicInteger>());
+//		sce.getServletContext().setAttribute(REQUESTSMAP, new ConcurrentHashMap<String, AtomicInteger>());
 	}
 
 	

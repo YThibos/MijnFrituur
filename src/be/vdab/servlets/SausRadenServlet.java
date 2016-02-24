@@ -21,7 +21,6 @@ public class SausRadenServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private static final String VIEW = "/WEB-INF/JSP/sausraden.jsp";
-	private static final String REDIRECT = "%s/sausraden.htm";
 	private final SausDAO sausDAO = new SausDAO();
 
 	/**
@@ -81,6 +80,7 @@ public class SausRadenServlet extends HttpServlet {
 			
 			// Haal gegokte letter op en check of ze voor komt
 			char gegokteLetter = request.getParameter("gegokteLetter").charAt(0);
+			@SuppressWarnings("unchecked")
 			List<Character> geradenLetters = (List<Character>) session.getAttribute("geradenLetters");
 			if (isLetterInWoord(teRadenSaus, gegokteLetter) && !geradenLetters.contains(gegokteLetter)) {
 				// Voeg gegokte letter toe bij juiste letters
