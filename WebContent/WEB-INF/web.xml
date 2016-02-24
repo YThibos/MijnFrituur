@@ -9,8 +9,7 @@
     <param-value>0800/12321</param-value>
   </context-param>
   <session-config>
-  	<session-timeout>30</session-timeout>
-  	<tracking-mode>COOKIE</tracking-mode>
-  	
+    <session-timeout>30</session-timeout>
+    <tracking-mode>COOKIE</tracking-mode>
   </session-config>
-  </web-app>
+</web-app>

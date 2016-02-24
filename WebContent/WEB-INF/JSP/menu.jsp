@@ -8,5 +8,6 @@
 	<li><a href="<c:url value='/meisjesjongens.htm'/>">MeisjesJongens</a></li>
 	<li><a href="<c:url value='/zoekdefriet.htm'/>">Zoek de Friet</a></li>
 	<li><a href="<c:url value='/sausraden.htm'/>">Saus Raden</a></li>
+	<li><a href="<c:url value='/statistiek.htm'/>">Statistiek</a></li>
 	</ul></nav>
 </header>
