@@ -1,17 +1,13 @@
 package be.vdab.listeners;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
+//import java.util.ArrayList;
+//import java.util.Arrays;
+//import java.util.List;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.ServletRequestEvent;
 import javax.servlet.ServletRequestListener;
-import javax.servlet.annotation.WebListener;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * REPLACED BY REQUESTFILTER
@@ -19,8 +15,8 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class RequestsListener implements ServletContextListener, ServletRequestListener {
 	
-	private static final String REQUESTSMAP = "requestsMap";
-	private static final List<String> EXCLUDES = new ArrayList<>(Arrays.asList("png", "gif", "jpg", "ico", "css", "js"));
+//	private static final String REQUESTSMAP = "requestsMap";
+//	private static final List<String> EXCLUDES = new ArrayList<>(Arrays.asList("png", "gif", "jpg", "ico", "css", "js"));
 
 	/**
      * @see ServletRequestListener#requestInitialized(ServletRequestEvent)
