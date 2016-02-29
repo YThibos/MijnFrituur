@@ -5,11 +5,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 
 import be.vdab.dao.SausDAO;
 import be.vdab.entities.Saus;
@@ -25,6 +27,11 @@ public class SauzenServlet extends HttpServlet {
 	private static final String REDIRECT_VIEW = "%s/sauzen.htm";
 
 	private static final SausDAO sausDAO = new SausDAO();
+	
+	@Resource(name = SausDAO.JNDI_NAME)
+	void setDataSource(DataSource dataSource) {
+		sausDAO.setDataSource(dataSource);
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -55,7 +62,7 @@ public class SauzenServlet extends HttpServlet {
 		List<String> ingredienten = new ArrayList<>();
 		sausDAO.findAll().stream().forEach(saus -> {
 			saus.getIngredienten().forEach(ingredient -> {
-				if (!ingredienten.contains(ingredient)) ingredienten.add(ingredient);
+				if (!ingredienten.contains(ingredient.getNaam())) ingredienten.add(ingredient.getNaam());
 				});
 			});
 		request.setAttribute("ingredienten", ingredienten);

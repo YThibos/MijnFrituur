@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<Context path='/pizzaLuigis'>
-	<Resource name='jdbc/pizzaLuigis'
-	 type='javax.sql.DataSource'
+<Context path='/MijnFrituur'>
+	<Resource name='jdbc/MijnFrituur'
+		type='javax.sql.DataSource'
 		driverClassName='com.mysql.jdbc.Driver' 
-		url='jdbc:mysql://localhost/pizzaLuigis'
+		url='jdbc:mysql://localhost/MijnFrituur'
 		username='cursist' 
 		password='cursist' 
 		closeMethod='close' />

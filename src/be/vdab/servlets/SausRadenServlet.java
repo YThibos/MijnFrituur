@@ -4,12 +4,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
 
 import be.vdab.dao.SausDAO;
 
@@ -21,8 +23,14 @@ public class SausRadenServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private static final String VIEW = "/WEB-INF/JSP/sausraden.jsp";
+	
 	private final SausDAO sausDAO = new SausDAO();
 
+	@Resource(name = SausDAO.JNDI_NAME)
+	void setDataSource(DataSource dataSource) {
+		sausDAO.setDataSource(dataSource);
+	}
+	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
