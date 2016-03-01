@@ -16,8 +16,13 @@
 <body>
 	<vdab:menu/>
 	
-	<section class="gastenboekToevoegen" hidden="${formHidden}">
+	<section class="gastenboekToevoegen">
 		<h1>Gastenboek</h1>
+		<c:choose>
+			<c:when test="${sessionScope.admin}">
+			<h3>Welcome mister Admin.</h3>
+			</c:when>
+		</c:choose>
 		
 		<form action="" method="post">
 			<label>Naam:</label>
@@ -29,12 +34,24 @@
 	</section>
 	
 	<section class="gastenboek">
+		<c:if test="${sessionScope.admin}">
+			<form method="post">
+		</c:if>
 		<c:forEach var="entry" items="${entries}">
 		<div class="entry">
+		<c:if test="${sessionScope.admin}">
+			<input type="checkbox" name="id" value="${entry.id}"/>Delete
+		</c:if>
 			<div class="entryinfo">${entry.datum} ${entry.naam}</div>
 			<div class="entrymessage">${entry.bericht}</div>
 		</div>
 		</c:forEach>
+		<c:if test="${sessionScope.admin}">
+			
+			<input type="submit" name="uitloggen" value="Uitloggen"/>
+			<input type="submit" name="verwijderen" value="Verwijder geselecteerde items"/>
+			</form>
+		</c:if>
 	</section>
 
 </body>

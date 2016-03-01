@@ -57,6 +57,12 @@ public class GastenboekServlet extends HttpServlet {
 			// Wegschrijven naar database via DAO
 			gbentryDAO.write(entry);
 		}
+		else if (request.getParameter("uitloggen") != null) {
+			this.getServletContext().removeAttribute("admin");
+		}
+		else if (request.getParameter("verwijderen") != null) {
+			// TODO FOREACH GESELECTEERDE CHECKBOX ID -> DELETE VIA GBENTRYDAO
+		}
 		
 		response.sendRedirect(String.format(REDIRECT, request.getContextPath()));
 		
