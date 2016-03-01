@@ -135,7 +135,7 @@ public class SausDAO extends AbstractDAO {
 			ResultSet results = statement.executeQuery();
 			
 			if (results.next()) {
-				return mapRowToNewSaus(results);
+				return mapRowToNewSausZonderIngr(results);
 			}
 			
 			return null;
@@ -144,6 +144,11 @@ public class SausDAO extends AbstractDAO {
 			throw new DAOException(ex);
 		}
 
+	}
+	
+	private Saus mapRowToNewSausZonderIngr (ResultSet results) throws SQLException {
+		List<Ingredient> ingredienten = new ArrayList<>();
+		return new Saus(results.getLong("sausid"), results.getString("sausnaam"), ingredienten);
 	}
 
 	private Saus mapRowToNewSaus(ResultSet results) throws SQLException {

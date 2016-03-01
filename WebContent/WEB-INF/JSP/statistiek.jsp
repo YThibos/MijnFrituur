@@ -1,7 +1,6 @@
-<%@ page language="java" contentType="text/html" pageEncoding="UTF-8"
-	session="false"
-%>
+<%@ page language="java" contentType="text/html" pageEncoding="UTF-8" session="false" %>
 <%@ taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
+<%@ taglib prefix="vdab" uri="http://vdab.be/tags" %>
 
 <!DOCTYPE HTML>
 <html lang='nl'>
@@ -16,7 +15,7 @@
 
 <body>
 
-	<c:import url="/WEB-INF/JSP/menu.jsp" />
+	<vdab:menu/>
 
 	<section class="content">
 		<h1>Statistiek</h1>
