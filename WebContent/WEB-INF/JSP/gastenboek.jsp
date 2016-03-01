@@ -15,7 +15,6 @@
 
 <body>
 	<vdab:menu/>
-	<a href=""
 	
 	<section class="gastenboekToevoegen" hidden="${formHidden}">
 		<h1>Gastenboek</h1>
