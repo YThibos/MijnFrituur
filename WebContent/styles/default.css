@@ -4,10 +4,6 @@ body {
 	font-family: "Verdana", sans-serif;
 }
 
-.fullwidth {
-	width: 100%;
-}
-
 dd,dt {
 	margin-left: 0;
 }
@@ -110,7 +106,10 @@ ul li input.verwijderCheck {
 	float:					left;
 }
 
-
+.gastenboekToevoegen label {
+	float: left;
+	width: 100px;
+}
 .meisjes {
 background-color: #FFCCFF;
 color: #FF0066;
@@ -118,4 +117,23 @@ color: #FF0066;
 .jongens {
 background-color: #CCFFFF;
 color: #3300FF;
+}
+.fullwidth {
+	width: 100%;
+}
+.gastenboek {
+	border: 1px gray solid;
+}
+.gastenboek .entry {
+	border: 1px silver solid;
+}
+.gastenboek .entryinfo {
+	color:	black;
+	font-size: 0.750em;
+}
+.gastenboek .entrymessage {
+	font-weight: bold;
+}
+.entry {
+	margin-bottom: 20px;
 }
