@@ -1,6 +1,7 @@
 package be.vdab.servlets;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -58,10 +59,11 @@ public class GastenboekServlet extends HttpServlet {
 			gbentryDAO.write(entry);
 		}
 		else if (request.getParameter("uitloggen") != null) {
-			this.getServletContext().removeAttribute("admin");
+			request.getSession().removeAttribute("admin");
 		}
 		else if (request.getParameter("verwijderen") != null) {
-			// TODO FOREACH GESELECTEERDE CHECKBOX ID -> DELETE VIA GBENTRYDAO
+			List<String> removeids = Arrays.asList(request.getParameterValues("removeid"));
+			removeids.stream().map(Long::parseLong).forEach(gbentryDAO::remove);
 		}
 		
 		response.sendRedirect(String.format(REDIRECT, request.getContextPath()));

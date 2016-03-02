@@ -40,7 +40,7 @@
 		<c:forEach var="entry" items="${entries}">
 		<div class="entry">
 		<c:if test="${sessionScope.admin}">
-			<input type="checkbox" name="id" value="${entry.id}"/>Delete
+			<input type="checkbox" name="removeid" value="${entry.id}"/>Delete
 		</c:if>
 			<div class="entryinfo">${entry.datum} ${entry.naam}</div>
 			<div class="entrymessage">${entry.bericht}</div>

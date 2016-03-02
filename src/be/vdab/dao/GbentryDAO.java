@@ -16,6 +16,8 @@ public class GbentryDAO extends AbstractDAO {
 			"SELECT id, naam, bericht, datum FROM gbentries ORDER BY datum DESC";
 	private static final String SQL_INSERT_ENTRY = 
 			"INSERT INTO gbentries (naam, bericht) VALUES (?, ?)";
+	private static final String SQL_DELETE_ID = 
+			"DELETE FROM gbentries WHERE id=?";
 	
 	public List<Gbentry> findAll() {
 		
@@ -50,6 +52,21 @@ public class GbentryDAO extends AbstractDAO {
 			statement.setString(1, entry.getNaam());
 			statement.setString(2, entry.getBericht());
 			
+			statement.executeUpdate();
+			
+		}
+		catch (SQLException ex ) {
+			throw new DAOException(ex);
+		}
+		
+	}
+	
+	public void remove(long id) {
+		
+		try (Connection connection = dataSource.getConnection();
+				PreparedStatement statement = connection.prepareStatement(SQL_DELETE_ID)) {
+			
+			statement.setLong(1, id);
 			statement.executeUpdate();
 			
 		}
